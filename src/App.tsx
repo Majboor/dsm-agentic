@@ -7,6 +7,7 @@ import { AppProvider, useApp } from "@/contexts/AppContext";
 import { useEffect } from "react";
 import Index from "./pages/Index";
 import Storefront from "./pages/Storefront";
+import Marketing from "./pages/Marketing";
 import NotFound from "./pages/NotFound";
 import ProductModalWrapper from "./components/ProductModalWrapper";
 import GlobalAIChat from "./components/GlobalAIChat";
@@ -39,6 +40,7 @@ const AppContent = () => {
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/store" element={<Storefront />} />
+        <Route path="/marketing" element={<Marketing />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <ProductModalWrapper />

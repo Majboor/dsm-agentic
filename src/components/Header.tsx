@@ -194,6 +194,7 @@ const Header = () => {
           </div>
 
           <Link to="/store" className="text-sm font-medium text-[#B1B2B3] hover:text-crimson transition-colors duration-300">Store</Link>
+          <Link to="/marketing" className="text-sm font-medium text-[#B1B2B3] hover:text-crimson transition-colors duration-300">DSM Marketing</Link>
           <a href="#" className="text-sm font-medium text-[#B1B2B3] hover:text-crimson transition-colors duration-300">Enterprise</a>
           <a href="#" className="text-sm font-medium text-[#B1B2B3] hover:text-crimson transition-colors duration-300">Support</a>
           <a href="#" className="text-sm font-medium text-[#B1B2B3] hover:text-crimson transition-colors duration-300">About</a>

@@ -71,13 +71,12 @@ const Header = () => {
   const [isOverLightSection, setIsOverLightSection] = useState(false);
   const [activeCategory, setActiveCategory] = useState("Productivity & Office");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       const lightSections = document.querySelectorAll('.section-light');
-      const headerHeight = 64;
+      const headerHeight = 132; // 36px announcement + 96px header
       
       // Track if user has scrolled past initial view
       setHasScrolled(window.scrollY > 50);
@@ -97,9 +96,6 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Determine if blur should be active (hover, scrolled, or over light section)
-  const shouldBlur = isHovered || hasScrolled || isOverLightSection;
-  
   // Dynamic text color based on background
   const navTextColor = isOverLightSection 
     ? 'text-[#1a1a1a] hover:text-crimson' 
@@ -111,19 +107,13 @@ const Header = () => {
 
   return (
     <>
-      {/* Header - Glass bar with conditional blur (top-9 accounts for AnnouncementBar height) */}
+      {/* Header - Pure glass blur on hover OR when scrolled */}
       <header 
-        className={`fixed top-9 left-0 w-full z-50 transition-all duration-500 border-b ${
-          shouldBlur 
-            ? isOverLightSection
-              ? 'bg-[rgba(255,255,255,0.75)] backdrop-blur-xl border-black/10'
-              : 'bg-[rgba(8,8,10,0.6)] backdrop-blur-xl border-white/10'
-            : 'bg-transparent backdrop-blur-none border-transparent'
+        className={`fixed top-9 left-0 right-0 z-50 transition-all duration-500 bg-transparent hover:backdrop-blur-md h-24 ${
+          hasScrolled ? 'backdrop-blur-md' : ''
         }`}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
       >
-        <div className="max-w-[1600px] mx-auto px-6 h-16 flex items-center justify-between relative">
+        <div className="max-w-[1600px] mx-auto px-6 md:px-12 h-24 flex items-center justify-between relative">
           {/* Logo */}
           <Link to="/" className="z-50 relative group flex items-center">
             <img 
@@ -167,9 +157,9 @@ const Header = () => {
         </div>
       </header>
       
-      {/* Mega Menu - SEPARATE element, matches header blur behavior (top-[100px] = 36px announcement + 64px header) */}
+      {/* Mega Menu - SEPARATE element, matches header blur behavior (top-[132px] = 36px announcement + 96px header) */}
       <div 
-        className={`fixed left-0 right-0 top-[100px] z-40 transition-all duration-300 ${
+        className={`fixed left-0 right-0 top-[132px] z-40 transition-all duration-300 ${
           isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
         }`}
         onMouseEnter={() => setIsMenuOpen(true)}

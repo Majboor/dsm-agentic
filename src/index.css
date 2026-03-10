@@ -217,17 +217,7 @@
 }
 
 /* ── Mega menu ──────────────────────────────────────── */
-.mega-menu {
-  visibility: hidden;
-  opacity: 0;
-  transform: translateY(6px);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.nav-item:hover .mega-menu {
-  visibility: visible;
-  opacity: 1;
-  transform: translateY(0);
-}
+/* Mega menu is now controlled via React state and portal */
 
 /* ── Scroll animations ──────────────────────────────── */
 .animate-on-scroll {

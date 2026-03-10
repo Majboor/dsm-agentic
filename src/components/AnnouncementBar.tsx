@@ -9,7 +9,7 @@ const MESSAGES = [
 
 const AnnouncementBar = () => {
   return (
-    <div className="relative z-50 bg-surface-card border-b border-theme overflow-hidden">
+    <div className="fixed top-0 left-0 right-0 z-50 bg-surface-card border-b border-theme overflow-hidden">
       <div className="max-w-[1600px] mx-auto px-6 flex items-center justify-between h-9">
         {/* Left — Business info */}
         <div className="hidden md:flex items-center gap-6 text-[10px] text-[#B1B2B3]/60 tracking-wide flex-shrink-0">
